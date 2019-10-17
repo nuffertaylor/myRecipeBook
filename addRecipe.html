@@ -3,7 +3,10 @@
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://kit.fontawesome.com/775768a85b.js"></script>
+    <script src="addRecipe.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -32,16 +35,41 @@
     </nav>
     
         <!-- dynamic form which allows you to add ingredients and instructions -->
+
+    <div style="padding:15px" ng-app="addRecipe" ng-controller="recipeCtrl">    
     <form>
-        First name:<br>
-        <input type="text" name="firstname" placeholder="prep time">
-        <br> Last name:<br>
-        <input type="text" name="lastname" placeholder="ingredients">
-        <br><br>
-        <input type="text" name="lastname" placeholder="instructions">
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
+            <div>
+                <div class="form-group">
+                    <label>Recipe Name:</label>
+                    <input type="text" id="recipe-name" required>
+                </div>
+                <div id="recipe-picture-div">
+                    Picture: <input type="text" id="recipe-picture" placeholder="Paste Image URL Here"></input>
+                </div>
+            </div>
+
+                <div>
+                    <h5>Add Ingredients</h5>
+                    <input type="number" placeholder="how much?" ng-model="ingredient.size">
+                    <select id="unit_measure" placeholder="what type?" ng-model="ingredient.unit" ng-options="x for x in measurements">
+                    </select>
+                    
+                    <input type="text" placeholder="of what?" ng-model="ingredient.type">
+                    <input type="button" class="btn btn-outline-primary" ng-click="addIngredient()" value="add"/>
+                    <div ng-repeat="x in ingredientList">
+                        <span>{{x.size}} {{x.unit}} of {{x.type}}</span> <i class="far fa-trash-alt trashCan" ng-click="removeIngredient(x)"></i>
+                    </div>
+                </div>
+
+                <div id="directions_sec">
+                    <h5>Add Steps</h5>
+                    <input type="text"/>
+                    <input type="button" class="btn btn-outline-primary" ng-click="addStep()" value="add"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary" ng-click="submitRecipe()">Submit your Recipe!</button>
+        </form>
+        </div>
 </body>
 
 </html>
