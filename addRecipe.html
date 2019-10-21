@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/775768a85b.js"></script>
     <script src="addRecipe.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -11,65 +11,60 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">my recipe book</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="addRecipe.html">add recipe<span class="sr-only">(current)</span></a>
-                </li>
-                <li class = "nav-item">
-                    <a class="nav-link" href="allRecipes.html">all recipes</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
+    <a class="navbar-brand" href="#">my recipe book</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="addRecipe.html">add recipe<span class="sr-only">(current)</span></a>
+            </li>
+            <li class = "nav-item">
+                <a class="nav-link" href="allRecipes.html">all recipes</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
     </nav>
     
         <!-- dynamic form which allows you to add ingredients and instructions -->
 
     <div style="padding:15px" ng-app="addRecipe" ng-controller="recipeCtrl">    
-    <form>
-            <div>
-                <div class="form-group">
-                    <label>Recipe Name:</label>
-                    <input type="text" id="recipe-name" required>
-                </div>
-                <div id="recipe-picture-div">
-                    Picture: <input type="text" id="recipe-picture" placeholder="Paste Image URL Here"></input>
-                </div>
+        
+        <div>
+            <div class="form-group">
+                <h5>recipe name</h5>
+                <input type="text" ng-model="recipe.name">
             </div>
-
-                <div>
-                    <h5>Add Ingredients</h5>
-                    <input type="number" placeholder="how much?" ng-model="ingredient.size">
-                    <select id="unit_measure" placeholder="what type?" ng-model="ingredient.unit" ng-options="x for x in measurements">
-                    </select>
-                    
-                    <input type="text" placeholder="of what?" ng-model="ingredient.type">
-                    <input type="button" class="btn btn-outline-primary" ng-click="addIngredient()" value="add"/>
-                    <div ng-repeat="x in ingredientList">
-                        <span>{{x.size}} {{x.unit}} of {{x.type}}</span> <i class="far fa-trash-alt trashCan" ng-click="removeIngredient(x)"></i>
-                    </div>
-                </div>
-
-                <div id="directions_sec">
-                    <h5>Add Steps</h5>
-                    <input type="text"/>
-                    <input type="button" class="btn btn-outline-primary" ng-click="addStep()" value="add"/>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-outline-primary" ng-click="submitRecipe()">Submit your Recipe!</button>
-        </form>
         </div>
+
+        <div>
+            <h5>ingredients</h5>
+            <input type="number" placeholder="how much?" ng-model="ingredient.size">
+            <select placeholder="what type?" ng-model="ingredient.unit" ng-options="x for x in measurements">
+            </select>
+            
+            <input type="text" placeholder="of what?" ng-model="ingredient.type">
+            <input type="button" class="btn btn-outline-primary" ng-click="addIngredient()" value="add">
+            <div ng-repeat="x in ingredientList">
+                <span>{{x.size}} {{x.unit}} of {{x.type}}</span> <i class="far fa-trash-alt trashCan" ng-click="removeIngredient(x)"></i>
+            </div>
+        </div>
+        <h5>instructions</h5>
+        <textarea ng-model="recipe.instructions"></textarea>
+        <h6>picture</h6><input type="text" ng-model="recipe.img" placeholder="Paste Image URL Here"></input>
+        <br><br>
+        <input type="button" class="btn btn-outline-primary" ng-click="submitRecipe()" value="submit your recipe">
+        
+    </div>
 </body>
 
 </html>
