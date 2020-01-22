@@ -115,7 +115,8 @@ router.get('/pullIngredients/:ref', function(req, res) {
 router.get('/randomRecipe', function(req,res) {
   Recipe.find({}, function(err, recipeList) {
     if (err) { console.log("an error has occured"); }
-    res.json(recipeList[(Math.floor(Math.random() * recipeList.length))]);
+    var idRef = recipeList[(Math.floor(Math.random() * recipeList.length))]._id;
+    res.redirect("/recipe/" + idRef);
   });
 });
 

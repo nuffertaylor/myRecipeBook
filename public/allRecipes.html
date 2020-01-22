@@ -38,8 +38,8 @@
         </div>
     </nav>
     
-    <h3>all recipes</h3>
     <div style="padding:15px" ng-app="recipeSelect" ng-controller="recipeCtrl">
+        <h3>all recipes</h3>
         <ul class="list-group">
             <div ng-repeat="x in recipeList">
                 <a href="recipe/{{x._id}}"><li class="list-group-item">{{x.name}}</li></a>

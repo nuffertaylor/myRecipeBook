@@ -9,7 +9,7 @@ app.controller("recipeCtrl", function($scope, $http) {
     ingredient.unit
     ingredient.type*/
     //https://en.wikibooks.org/wiki/Cookbook:Units_of_measurement
-    $scope.measurements = ["cup","teaspoon","tablespoon","ounce", "gram", "milligram", "fluid ounce", "pint", "liter", "pound", "other"];
+    $scope.measurements = ["","cup","teaspoon","tablespoon","ounce", "gram", "milligram", "fluid ounce", "pint", "liter", "pound", "other"];
     
     
     $scope.heyMan = function()
@@ -36,7 +36,7 @@ app.controller("recipeCtrl", function($scope, $http) {
         {
             var ingredient = new Object();
             ingredient = $scope.ingredient;
-            console.log(ingredient);
+            //console.log(ingredient);
             $scope.ingredientList.push(ingredient);
             $scope.ingredient = angular.copy($scope.master);
         }
@@ -88,23 +88,23 @@ app.controller("recipeCtrl", function($scope, $http) {
                 $scope.recipe.numIngredients = ingredArray.length;
                 $scope.recipe.user = "admin";
                 var sendJSON = JSON.stringify(recipe);
-                console.log(sendJSON);
+                //console.log(sendJSON);
                 $http({
                     method: 'POST',
                     url: '/newRecipe',
                     headers: { 'Content-Type': 'application/json' },
                     data: sendJSON
                 }).then(function successCallback(response) {
-                    console.log(response.data);
-                    console.log(ingredArray.length)
+                    //console.log(response.data);
+                    //console.log(ingredArray.length)
                     for (var i = 0; i < ingredArray.length; i++)
                     {
-                        console.log(i);
+                        //console.log(i);
                         var ingredToPost = new Object();
                         ingredToPost = ingredArray[i];
                         ingredToPost.recipeRef = response.data;
                         var ingredJSON = JSON.stringify(ingredToPost);
-                        console.log(ingredJSON);
+                        //console.log(ingredJSON);
                         $http({
                         method: 'POST',
                         url: '/newIngredient',
