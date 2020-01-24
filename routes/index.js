@@ -41,6 +41,10 @@ router.get('/recipe/:_id', function(req,res) {
   res.sendFile(path.join(__dirname + '/../public/recipeDetails.html'));
 });
 
+router.get('/ranRecipe/:_id', function(req,res) {
+  res.sendFile(path.join(__dirname + '/../public/ranRecipeDetails.html'));
+});
+
 router.post('/newRecipe', function(req, res, next) {
   console.log("posting a new recipe");
   Recipe.find({},
@@ -116,7 +120,7 @@ router.get('/randomRecipe', function(req,res) {
   Recipe.find({}, function(err, recipeList) {
     if (err) { console.log("an error has occured"); }
     var idRef = recipeList[(Math.floor(Math.random() * recipeList.length))]._id;
-    res.redirect("/recipe/" + idRef);
+    res.redirect("/ranRecipe/" + idRef);
   });
 });
 

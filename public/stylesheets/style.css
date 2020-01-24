@@ -1,3 +1,9 @@
 .trashCan:hover {
     opacity: .5;
 }
+
+.container {
+    width: 100%;
+    position:fixed;
+    height: 100%;
+}

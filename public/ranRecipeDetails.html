@@ -10,28 +10,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">my recipe book</a>
-    
-        <ul class="nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/"><i class="fas fa-random"></i> <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="addRecipe"><i class="fas fa-plus"></i></a>
-            </li>
-            <li class = "nav-item">
-                <a class="nav-link" href="allRecipes"><i class="fas fa-list-ul"></i></a>
-            </li>
-        </ul>
-        <!-- TODO: Implement Search Function
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        -->
-    </div>
-    </nav>
     
     <div style="padding:15px" ng-app="recipeDetails" ng-controller="recipeCtrl">
         <h2>{{recipeInfo.name}}</h2>
