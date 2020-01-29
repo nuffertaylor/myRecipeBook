@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="/javascripts/recipeSelect.js"></script>
+    <script src="https://kit.fontawesome.com/775768a85b.js"></script>
+    <style>
+        a:link, a:visited {
+          text-decoration: none;
+          color : black;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div style="padding:15px" ng-app="recipeSelect" ng-controller="recipeCtrl" class="container">
+        <h3>all recipes</h3>
+        <ul class="list-group">
+            <div ng-repeat="x in recipeList">
+                <a href="recipe/{{x._id}}"><li class="list-group-item">{{x.name}}</li></a>
+            </div>
+        </ul>
+    </div>
+
+</body>
+
+</html>
